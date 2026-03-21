@@ -1,1 +1,41 @@
 @import "tailwindcss";
+
+@import "tailwindcss";
+
+@theme {
+    --font-sans: var(--font-public-sans) ui-sans-serif, system-ui, sans-serif;
+    --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+
+    --color-brand-primary: #1a1c1a; /* Deep Charcoal */
+    --color-brand-secondary: #0e0e0e; /* Soft Black */
+    --color-brand-accent: #8ea392; /* Muted Sage Accent */
+
+    --color-surface-base: #131313;
+    --color-surface-muted: #1f2020;
+    --color-surface-bright: #2b2c2c;
+
+    --color-text-main: #c7c7bb; /* Soft Stone */
+    --color-text-muted: #acabaa; /* Muted Grey */
+    --color-text-highlight: #e7e5e5; /* Near White */
+
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+}
+
+@utility text-legal-body {
+    font-family: var(--font-serif);
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: var(--color-text-main);
+    -webkit-font-smoothing: antialiased;
+}
+
+@utility text-ui-label {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}

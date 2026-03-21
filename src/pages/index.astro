@@ -6,13 +6,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout>
     <main class="py-8 px-2 flex justify-center text-center">
         <div>
-            <h1 class="py-4 font-bold text-3xl font-serif">minil</h1>
+            <h1 class="py-4 font-bold text-3xl">minil</h1>
             <div
                 class="flex flex-col sm:flex-row gap-x-4 gap-y-2 items-center justify-center py-8"
             >
                 <label for="doc-search">Search</label>
                 <input
-                    class="border-t-slate-800 border-2 outline-offset-2 rounded-sm px-2 py-1"
+                    type="text"
+                    class="bg-surface-muted border-none text-text-highlight rounded-md p-4 focus:ring-1 focus:ring-brand-accent outline-none"
                     id="doc-search"
                     placeholder="number/year"
                 />
