@@ -1,23 +1,44 @@
 ---
-import "../styles/global.css";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
-<BaseLayout>
-    <main class="py-8 px-2 flex justify-center text-center">
-        <div>
-            <h1 class="py-4 font-bold text-3xl">minil</h1>
-            <div
-                class="flex flex-col sm:flex-row gap-x-4 gap-y-2 items-center justify-center py-8"
-            >
-                <label for="doc-search">Search</label>
-                <input
-                    type="text"
-                    class="bg-surface-muted border-none text-text-highlight rounded-md p-4 focus:ring-1 focus:ring-brand-accent outline-none"
-                    id="doc-search"
-                    placeholder="number/year"
-                />
+<BaseLayout title="minil. Home">
+    <main class="flex grow flex-col items-center justify-center px-6 pt-16">
+        <div class="max-w-2xl w-full text-center space-y-12">
+            <div class="space-y-4">
+                <h1
+                    class="text-8xl font-black tracking-tighter text-text-highlight"
+                >
+                    minil.
+                </h1>
             </div>
+
+            <form id="goto-form" on-submit="" class="flex flex-col gap-y-4">
+                <label for="goto-input" class="text-ui-label text-xs sr-only"
+                    >Go to document</label
+                >
+                <input
+                    id="goto-input"
+                    type="text"
+                    placeholder="Type number / year to go to document"
+                    autofocus
+                    class="w-full bg-surface-base border border-[#484848]/15 rounded-md text-center py-5 pl-14 pr-16 text-text-highlight placeholder-[#57615c] focus:outline-none focus:ring-1 focus:ring-brborder-brand-accent/50 focus:border-brand-accent/50 transition-all shadow-xl"
+                />
+            </form>
         </div>
     </main>
 </BaseLayout>
+<script>
+    const form = document.getElementById("goto-form");
+    form?.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = document.getElementById("goto-input");
+        const value = (input as HTMLInputElement)?.value.trim();
+        if (value) {
+            const [number, year] = value.split("/").map((elem) => elem.trim());
+            if (number && year) {
+                window.location.assign(`/documents/${year}/${number}`);
+            }
+        }
+    });
+</script>

@@ -1,22 +1,19 @@
 @import "tailwindcss";
 
-@import "tailwindcss";
-
 @theme {
-    --font-sans: var(--font-public-sans) ui-sans-serif, system-ui, sans-serif;
-    --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+    --font-sans: var(--font-public-sans), ui-sans-serif, system-ui, sans-serif;
 
-    --color-brand-primary: #1a1c1a; /* Deep Charcoal */
-    --color-brand-secondary: #0e0e0e; /* Soft Black */
-    --color-brand-accent: #8ea392; /* Muted Sage Accent */
+    --color-brand-primary: #1a1c1a;
+    --color-brand-secondary: #0e0e0e;
+    --color-brand-accent: #8ea392;
 
     --color-surface-base: #131313;
     --color-surface-muted: #1f2020;
     --color-surface-bright: #2b2c2c;
 
-    --color-text-main: #c7c7bb; /* Soft Stone */
-    --color-text-muted: #acabaa; /* Muted Grey */
-    --color-text-highlight: #e7e5e5; /* Near White */
+    --color-text-main: #c7c7bb;
+    --color-text-muted: #acabaa;
+    --color-text-highlight: #e7e5e5;
 
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;

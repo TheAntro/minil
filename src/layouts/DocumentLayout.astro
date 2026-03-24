@@ -1,0 +1,29 @@
+---
+import { z } from "astro/zod";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const ParamsSchema = z.object({
+    number: z.coerce.number().int().positive(),
+    year: z.coerce.number().int().positive(),
+});
+
+const result = ParamsSchema.safeParse(Astro.params);
+
+if (!result.success) {
+    return Astro.rewrite("/404");
+}
+
+const { number, year } = result.data;
+---
+
+<BaseLayout title={`${number}/${year}`}>
+    <header class="flex items-center justify-start h-16 px-8">
+        <a href="/">
+            <span
+                class="logo-transition font-headline text-2xl font-extrabold tracking-tighter text-on-surface group-hover:text-primary transition-colors duration-300"
+                >minil.</span
+            >
+        </a>
+    </header>
+    <slot />
+</BaseLayout>

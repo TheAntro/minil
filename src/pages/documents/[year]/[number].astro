@@ -1,0 +1,23 @@
+---
+import { z } from "astro/zod";
+import DocumentLayout from "@/layouts/DocumentLayout.astro";
+
+const ParamsSchema = z.object({
+    number: z.coerce.number().int().positive(),
+    year: z.coerce.number().int().positive(),
+});
+
+const result = ParamsSchema.safeParse(Astro.params);
+
+if (!result.success) {
+    return Astro.rewrite("/404");
+}
+
+const { number, year } = result.data;
+---
+
+<DocumentLayout>
+    <main>
+        <h1>{`${number}/${year}`}</h1>
+    </main>
+</DocumentLayout>

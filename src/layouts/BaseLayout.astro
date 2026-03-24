@@ -1,5 +1,15 @@
 ---
 import { Font } from "astro:assets";
+import { z } from "astro/zod";
+
+import "@/styles/global.css";
+
+const PropsSchema = z.object({
+    title: z.string().min(1),
+});
+
+type Props = z.infer<typeof PropsSchema>;
+
 const { title } = Astro.props;
 ---
 
@@ -11,10 +21,11 @@ const { title } = Astro.props;
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <Font cssVariable="--font-public-sans" preload />
-        <Font cssVariable="--font-source-serif" preload />
-        <title>Astro</title>
+        <title>{title}</title>
     </head>
-    <body class="bg-brand-primary text-text-main font-sans antialiased">
+    <body
+        class="bg-brand-primary text-text-main font-sans antialiased min-h-screen flex flex-col"
+    >
         <slot />
     </body>
 </html>
