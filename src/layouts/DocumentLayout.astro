@@ -2,21 +2,16 @@
 import { z } from "astro/zod";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
-const ParamsSchema = z.object({
-    number: z.coerce.number().int().positive(),
-    year: z.coerce.number().int().positive(),
+const PropsSchema = z.object({
+    title: z.string(),
 });
 
-const result = ParamsSchema.safeParse(Astro.params);
+type Props = z.infer<typeof PropsSchema>;
 
-if (!result.success) {
-    return Astro.rewrite("/404");
-}
-
-const { number, year } = result.data;
+const { title } = Astro.props;
 ---
 
-<BaseLayout title={`${number}/${year}`}>
+<BaseLayout title={title}>
     <header class="flex items-center justify-start h-16 px-8">
         <a href="/">
             <span

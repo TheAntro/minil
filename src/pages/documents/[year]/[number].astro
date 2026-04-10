@@ -1,6 +1,12 @@
 ---
 import { z } from "astro/zod";
 import DocumentLayout from "@/layouts/DocumentLayout.astro";
+import { getDocument } from "@/lib/data_client";
+
+Astro.response.headers.set(
+    "Cache-Control",
+    "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400",
+);
 
 const ParamsSchema = z.object({
     number: z.coerce.number().int().positive(),
@@ -14,10 +20,16 @@ if (!result.success) {
 }
 
 const { number, year } = result.data;
+const data = await getDocument({ year, number });
+if (!data) {
+    return Astro.rewrite("/404");
+}
+const { docNumber, docTitle } = data;
+const title = `${docNumber} ${docTitle}`;
 ---
 
-<DocumentLayout>
+<DocumentLayout title={title}>
     <main>
-        <h1>{`${number}/${year}`}</h1>
+        <h1>{title}</h1>
     </main>
 </DocumentLayout>

@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, fontProviders } from "astro/config";
+import { defineConfig, envField, fontProviders } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -26,4 +26,13 @@ export default defineConfig({
 
   output: "server",
   adapter: cloudflare(),
+  env: {
+    schema: {
+      LAW_DATA_URL: envField.string({
+        context: "server",
+        access: "public",
+        optional: false,
+      }),
+    },
+  },
 });

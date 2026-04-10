@@ -5,4 +5,7 @@
   "assets": {
     "directory": "./dist",
   },
+  "vars": {
+    "LAW_DATA_URL": "https://opendata.finlex.fi/finlex/avoindata/v1",
+  },
 }
